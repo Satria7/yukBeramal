@@ -106,7 +106,7 @@ class LoginPage extends StatelessWidget {
                             ),
                             const SizedBox(width: 6),
                             const Text(
-                              'TASBIH DIGITAL',
+                              'YUK BERAMAL',
                               style: TextStyle(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w700,
