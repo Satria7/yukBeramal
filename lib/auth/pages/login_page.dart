@@ -197,6 +197,17 @@ class LoginPage extends StatelessWidget {
                             ),
                           ),
                         ),
+                        const SizedBox(height: 20),
+                        Center(
+                          child: Text(
+                            'yukBeramal by Satria Junanda',
+                            style: TextStyle(
+                              fontSize: 10,
+                              color: Colors.grey.shade400,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
