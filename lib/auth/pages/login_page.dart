@@ -64,7 +64,6 @@ class LoginPage extends StatelessWidget {
             SafeArea(
               child: Center(
                 child: ConstrainedBox(
-                  // biar tetap rapi kalau dibuka di layar lebar (desktop browser)
                   constraints: const BoxConstraints(maxWidth: 420),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 28),
@@ -72,7 +71,7 @@ class LoginPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // ── Logo (emoji, tanpa perlu file asset) ──
+                        // ── Logo ──
                         Center(
                           child: Container(
                             width: 96,
@@ -89,11 +88,16 @@ class LoginPage extends StatelessWidget {
                               ],
                             ),
                             child: const Center(
-                              child: Text('📿', style: TextStyle(fontSize: 42)),
+                              child: Text(
+                                '📿',
+                                style: TextStyle(fontSize: 42),
+                              ),
                             ),
                           ),
                         ),
+
                         const SizedBox(height: 32),
+
                         Row(
                           children: [
                             Container(
@@ -116,7 +120,9 @@ class LoginPage extends StatelessWidget {
                             ),
                           ],
                         ),
+
                         const SizedBox(height: 8),
+
                         const Text(
                           'Hitung Dzikir,\nTerhubung Bersama',
                           style: TextStyle(
@@ -127,7 +133,9 @@ class LoginPage extends StatelessWidget {
                             height: 1.25,
                           ),
                         ),
+
                         const SizedBox(height: 12),
+
                         Text(
                           'Masuk untuk menyimpan pencapaianmu dan lihat peringkat bersama pengguna lain.',
                           style: TextStyle(
@@ -136,56 +144,65 @@ class LoginPage extends StatelessWidget {
                             height: 1.6,
                           ),
                         ),
+
                         const SizedBox(height: 40),
 
                         // ── Tombol Google ──
-                        Obx(() => GestureDetector(
-                          onTap: controller.isLoading.value
-                              ? null
-                              : controller.signInWithGoogle,
-                          child: Container(
-                            width: double.infinity,
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(16),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.07),
-                                  blurRadius: 16,
-                                  offset: const Offset(0, 4),
-                                ),
-                              ],
-                            ),
-                            child: controller.isLoading.value
-                                ? const Center(
-                              child: SizedBox(
-                                width: 22,
-                                height: 22,
-                                child: CircularProgressIndicator(
-                                    color: _green, strokeWidth: 2.5),
+                        Obx(
+                              () => GestureDetector(
+                            onTap: controller.isLoading.value
+                                ? null
+                                : controller.signInWithGoogle,
+                            child: Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.symmetric(vertical: 16),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(16),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.07),
+                                    blurRadius: 16,
+                                    offset: const Offset(0, 4),
+                                  ),
+                                ],
                               ),
-                            )
-                                : const Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(Icons.login_rounded,
-                                    color: _textDark, size: 20),
-                                SizedBox(width: 10),
-                                Text(
-                                  'Masuk dengan Google',
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w700,
-                                    color: _textDark,
+                              child: controller.isLoading.value
+                                  ? const Center(
+                                child: SizedBox(
+                                  width: 22,
+                                  height: 22,
+                                  child: CircularProgressIndicator(
+                                    color: _green,
+                                    strokeWidth: 2.5,
                                   ),
                                 ),
-                              ],
+                              )
+                                  : const Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.login_rounded,
+                                    color: _textDark,
+                                    size: 20,
+                                  ),
+                                  SizedBox(width: 10),
+                                  Text(
+                                    'Masuk dengan Google',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w700,
+                                      color: _textDark,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        )),
+                        ),
 
                         const SizedBox(height: 16),
+
                         Center(
                           child: Text(
                             'Dengan masuk, kamu menyetujui syarat & ketentuan yang berlaku.',
@@ -197,18 +214,26 @@ class LoginPage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 20),
-                        Center(
-                          child: Text(
-                            'yukBeramal by Satria Junanda',
-                            style: TextStyle(
-                              fontSize: 10,
-                              color: Colors.grey.shade400,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
                       ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 16,
+              child: SafeArea(
+                top: false,
+                child: Center(
+                  child: Text(
+                    'yukBeramal by Satria Junanda',
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: Colors.grey.shade400,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),
