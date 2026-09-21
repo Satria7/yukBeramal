@@ -1,10 +1,11 @@
 import 'dart:math' as math;
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:tasbih_web/controller/tasbih_controller.dart';
 
+import '../controllers/tasbih_controller.dart';
 
 class TasbihPage extends GetView<TasbihController> {
   const TasbihPage({super.key});
@@ -72,14 +73,7 @@ class TasbihPage extends GetView<TasbihController> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          IconButton(
-            onPressed: () => Get.back(),
-            icon: const Icon(
-              Icons.arrow_back_ios_rounded,
-              color: _textDark,
-              size: 20,
-            ),
-          ),
+          _buildLogoutButton(),
           const Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,11 +106,55 @@ class TasbihPage extends GetView<TasbihController> {
     );
   }
 
+  Widget _buildLogoutButton() {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () => _confirmLogout(),
+        borderRadius: BorderRadius.circular(12),
+        child: Container(
+          width: 40,
+          height: 40,
+          alignment: Alignment.center,
+          child: Icon(
+            Icons.logout_rounded,
+            color: Colors.grey.shade500,
+            size: 20,
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _confirmLogout() {
+    Get.dialog(
+      AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        title: const Text('Keluar?'),
+        content: const Text('Kamu perlu login lagi untuk melanjutkan hitungan yang tersinkron.'),
+        actions: [
+          TextButton(
+            onPressed: () => Get.back(),
+            child: Text('Batal', style: TextStyle(color: Colors.grey.shade500)),
+          ),
+          TextButton(
+            onPressed: () {
+              Get.back();
+              FirebaseAuth.instance.signOut();
+            },
+            child: const Text('Keluar',
+                style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.w700)),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _buildLeaderboardButton() {
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        onTap: () => Get.toNamed('/dashboard/tasbih-leaderboard'),
+        onTap: () => Get.toNamed('/leaderboard'),
         borderRadius: BorderRadius.circular(12),
         child: Container(
           width: 40,

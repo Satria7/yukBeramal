@@ -2,9 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:tasbih_web/controller/tasbih_controller.dart' show TasbihMode;
-import 'package:tasbih_web/controller/tasbih_leaderboard_controller.dart';
-import 'package:tasbih_web/entities/leaderboard_entry.dart';
+
+import '../../domain/entities/leaderboard_entry.dart';
+import '../controllers/tasbih_controller.dart' show TasbihMode;
+import '../controllers/tasbih_leaderboard_controller.dart';
 
 class TasbihLeaderboardPage extends GetView<TasbihLeaderboardController> {
   const TasbihLeaderboardPage({super.key});

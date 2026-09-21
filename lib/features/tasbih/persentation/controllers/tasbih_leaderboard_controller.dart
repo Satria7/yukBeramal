@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import '../entities/leaderboard_entry.dart';
+
+import '../../domain/entities/leaderboard_entry.dart';
 import 'tasbih_controller.dart' show TasbihMode;
 
 enum LeaderboardMetric { khatam, hitungan }

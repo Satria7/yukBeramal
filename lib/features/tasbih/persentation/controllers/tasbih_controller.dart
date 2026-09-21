@@ -154,7 +154,7 @@ class TasbihController extends GetxController {
         target.value = customTarget ?? target.value;
         break;
       case TasbihMode.unlimited:
-      // target diabaikan saat unlimited, tapi tetap disimpan buat referensi terakhir
+        // target diabaikan saat unlimited, tapi tetap disimpan buat referensi terakhir
         break;
     }
     count.value = 0;
